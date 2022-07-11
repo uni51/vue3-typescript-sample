@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, reactive, computed, watch, toRefs } from 'vue'
+import { ref, reactive, computed, watch, toRefs, onBeforeMount, onMounted, onUpdated } from 'vue'
 
 // refでリアクティブに値を参照する（単一の値をリアクティブにする）
 // const itemName1 = ref<string>('Desk')
@@ -36,6 +36,18 @@ const budget = 50000
 // 		return item1.price + ' 円'
 // 	}
 // })
+
+onBeforeMount(() => {
+	console.log('before mount')
+})
+
+onMounted(() => {
+	console.log('mounted')
+})
+
+onUpdated(() => {
+	console.log('updated')
+})
 
 const priceLabel = ref<string>(item1.price + ' yen')
 const { price } = toRefs(item1)
