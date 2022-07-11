@@ -20,13 +20,9 @@ const buy = (itemName: string) => {
 	alert('Are you sure to buy ' + itemName + '?')
 }
 
-const inputName = (event: any) => {
-	// itemName1.value = event.target.value // ref形式の場合
-	item1.name = event.target.value
-}
-
-const inputPrice = (event: any) => {
-	item1.price = event.target.value
+const clear = () => {
+	item1.name = ''
+	item1.price = 0
 }
 
 </script>
@@ -34,8 +30,9 @@ const inputPrice = (event: any) => {
 <template>
 	<div class="container">
 		<h1>Payment</h1>
-		<input v-on:input="inputName" />
-		<input v-on:input="inputPrice" />
+		<input v-model="item1.name" />
+		<input v-model="item1.price" />
+		<button v-on:click="clear">Clear</button>
 		<div class="payment">
 			<label>{{ item1.name }}</label>
 			<label>{{ item1.price }}円</label>
